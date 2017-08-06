@@ -56,8 +56,17 @@ public class MNIST
     {
         try {
             MNIST m = MNIST.getInstance();
-            for (long i=0; i<m.numTrainingImages(); i++)
-                m.getNextTrainingImage().printImage();
+            System.out.println("Training -> " + m.numTrainingImages());
+            for (long i=0; i<m.numTrainingImages(); i++) {
+                m.getNextTrainingLabel();
+                m.getNextTrainingImage();
+            }
+            System.out.println("Testing -> " + m.numTestingImages());
+            for (long i=0; i<m.numTestingImages(); i++) {
+                m.getNextTestingLabel();
+                m.getNextTestingImage();
+            }
+            System.out.println("Done");
         } catch (IOException | IDXException e) {
             System.out.println(e.toString());  
         }
